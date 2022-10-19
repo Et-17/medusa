@@ -1,5 +1,8 @@
-fn modpow(mut b: i32, mut e: i32, m: i32) -> i32 {
-    let mut y: i32 = 1;
+fn modpow(b: i32, e: i32, m: i32) -> i32 {
+    let mut y: u128 = 1;
+    let mut b: u128 = b as u128;
+    let mut e: u128 = e as u128;
+    let m: u128 = m as u128;
     while e > 0 {
         if e & 1 >= 1 {
             y = (y * b) % m;
@@ -7,7 +10,7 @@ fn modpow(mut b: i32, mut e: i32, m: i32) -> i32 {
         b = (b * b) % m;
         e >>= 1;
     }
-    return y;
+    return y as i32;
 }
 
 fn summation(n: i32, a: i32) -> f64 {
